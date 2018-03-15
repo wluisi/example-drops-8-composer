@@ -35,6 +35,12 @@ web/web.config
 # Add directories containing build assets below.
 # Keep all additions above the "cut" line.
 
+# Ignore settings local vars
+web/sites/default/settings.local.vars.php
+
+# Ignore local behat
+tests/behat.local.yml
+
 # This distinction is only important when using this
 # repository as a custom upstream. The .gitignore file
 # is not modified in the GitHub PR workflow.
@@ -58,7 +64,7 @@ web/sites/default/files
 # Place local settings in settings.local.php
 web/sites/*/settings.local.php
 web/sites/*/services*.yml
-!web/sites/*/services.pantheon.*.yml 
+!web/sites/*/services.pantheon.*.yml
 
 # Ignore SimpleTest multi-site environment.
 web/sites/simpletest
