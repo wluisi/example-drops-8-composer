@@ -1,4 +1,5 @@
-# CMC Drupal 8
+# Drupal 8 Composer for Pantheon
+Starter repo for Drupal 8 sites using composer and hosted on Pantheon.
 
 ## Circle CI
 Circle CI badge goes here.
