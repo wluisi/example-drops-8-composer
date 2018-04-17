@@ -41,6 +41,9 @@ web/sites/default/settings.local.vars.php
 # Ignore local behat
 tests/behat.local.yml
 
+# Ignore lando
+.lando.yml
+
 # This distinction is only important when using this
 # repository as a custom upstream. The .gitignore file
 # is not modified in the GitHub PR workflow.

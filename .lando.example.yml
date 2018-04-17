@@ -1,0 +1,14 @@
+name: SITE_NAME
+recipe: drupal8
+config:
+  webroot: web
+  xdebug: true
+tooling:
+  pwd:
+    service: appserver
+    cmd: pwd
+  # Hack to get drupal console to work using "lando drupal"
+  drupal:
+    cmd:
+      - "/app/vendor/bin/drupal"
+      - "--root=/app/web"

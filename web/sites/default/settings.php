@@ -32,6 +32,14 @@ if (file_exists($local_settings)) {
 }
 
 /**
+ * For devs using lando
+ */
+$lando_settings = __DIR__ . "/settings.lando.php";
+if (getenv('LANDO') === 'ON' && file_exists($lando_settings)) {
+  include $lando_settings;
+}
+
+/**
  * Always install the 'standard' profile to stop the installer from
  * modifying settings.php.
  */
