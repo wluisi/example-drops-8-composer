@@ -3,6 +3,8 @@ recipe: drupal8
 config:
   webroot: web
   xdebug: true
+  # Fix for mysql issue: https://github.com/lando/lando/issues/909
+  database: mariadb:10.1
 tooling:
   pwd:
     service: appserver
