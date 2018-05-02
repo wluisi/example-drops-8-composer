@@ -1,10 +1,25 @@
 name: SITE_NAME
 recipe: drupal8
+# Add docker-compose for behat chromedriver
+compose:
+  - docker-compose.yml
 config:
   webroot: web
   xdebug: true
   # Fix for mysql issue: https://github.com/lando/lando/issues/909
   database: mariadb:10.1
+  via: nginx
+# Services
+services:
+  appserver:
+    overrides:
+      services:
+        environment:
+          BEHAT_PARAMS: >-
+            {"extensions" : {"Behat\\MinkExtension" : {"base_url" :
+            "http://nginx/", "files_path" : "/app/web/tests/fixtures/"}, "Drupal\\DrupalExtension" : {"drush" :   {
+            "root":  "/app/web" }}}}
+# Tooling
 tooling:
   pwd:
     service: appserver
@@ -14,3 +29,17 @@ tooling:
     cmd:
       - "/app/vendor/bin/drupal"
       - "--root=/app/web"
+  # PHP testing
+  phplint:
+    service: appserver
+    cmd: /app/vendor/bin/phplint
+  phpcs:
+    service: appserver
+    cmd: /app/vendor/bin/phpcs
+  phpunit:
+    service: appserver
+    cmd: /app/vendor/bin/phpunit
+  # Add behat cmd
+  behat:
+    service: appserver
+    cmd: /app/vendor/bin/behat
